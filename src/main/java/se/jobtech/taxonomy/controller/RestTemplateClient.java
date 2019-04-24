@@ -11,3 +11,4 @@ public class RestTemplateClient {
         return new RestTemplate();
     }
 }
+
