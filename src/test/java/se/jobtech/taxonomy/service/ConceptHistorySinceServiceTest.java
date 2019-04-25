@@ -17,7 +17,7 @@ public class ConceptHistorySinceServiceTest {
 
     @Test
     public void taxonomyPublicApiConceptHistorySinceGetTest() {
-        String dateTime = "2018-08-08 14:00:00";
+        String dateTime = "2015-08-08 14:00:00";
 
 
 
@@ -42,17 +42,6 @@ public class ConceptHistorySinceServiceTest {
         Object response = api.taxonomyPublicApiDeprecatedConceptHistorySinceGet(dateTime);
 
         assertNotNull(response);
-    }
-
-
-
-   //@Test
-    public void taxonomyPublicApiFullHistoryGetTest() {
-        System.out.println(api.getApiClient());
-
-        List<Response38763> response = api.taxonomyPublicApiFullHistoryGet();
-
-        // TODO: test validations
     }
 
 
