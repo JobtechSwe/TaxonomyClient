@@ -1,12 +1,20 @@
 package se.jobtech.taxonomy.domain;
 
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.threeten.bp.OffsetDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @EqualsAndHashCode
 @ToString
 @Table(name = "concepthistory")
@@ -25,36 +33,35 @@ import javax.persistence.*;
 
 public class ConceptHistoryEntity {
     @Id
-    @Column(name="conceptid")
-    private String conceptId ;
+    @Column(name = "conceptid")
+    private String conceptId;
 
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
 
-    @Column(name="preferredterm")
-    private String preferredTerm ;
+    @Column(name = "preferredterm")
+    private String preferredTerm;
 
-    @Column(name="newpreferredterm")
+    @Column(name = "newpreferredterm")
     private String newPreferredTerm;
 
-    @Column(name="oldpreferredterm")
-    private String oldPreferredTerm ;
+    @Column(name = "oldpreferredterm")
+    private String oldPreferredTerm;
 
-    @Column(name="deprecated")
-    private Boolean deprecated ;
+    @Column(name = "deprecated")
+    private Boolean deprecated;
 
-    @Column(name="transactionid")
-    private Long transactionId ;
+    @Column(name = "transactionid")
+    private Long transactionId;
 
-    @Column(name="timestamp")
-    private OffsetDateTime timestamp ;
+    @Column(name = "timestamp")
+    private OffsetDateTime timestamp;
 
-    @Column(name="eventtype")
-    private String eventType ;
+    @Column(name = "eventtype")
+    private String eventType;
 
 
-
-    public  ConceptHistoryEntity() {
+    public ConceptHistoryEntity() {
         this.category = null;
         this.preferredTerm = null;
         this.newPreferredTerm = null;
@@ -78,7 +85,6 @@ public class ConceptHistoryEntity {
         this.conceptId = conceptId;
         this.eventType = eventType;
     }
-
 
 
 }
