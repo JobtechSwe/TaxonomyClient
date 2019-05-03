@@ -11,7 +11,6 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/taxonomy")
 public class TaxonomyController {
     final ConceptHistorySinceService conceptHistorySinceService;
 
@@ -20,7 +19,7 @@ public class TaxonomyController {
     }
 
 
-    @GetMapping("/consepthistorysince")
+    @GetMapping("/consepthistory")
     private List<ConceptHistoryEntity> getAllHistorysSince() {
 
         String dateTime = "2015-08-08 14:00:00";
