@@ -5,6 +5,7 @@ import se.jobtech.taxonomy.client.api.PublicApi;
 import se.jobtech.taxonomy.client.model.Response38760;
 import se.jobtech.taxonomy.client.model.Response38763;
 import se.jobtech.taxonomy.client.model.Response38765;
+import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertNotNull;
 public class ConceptHistorySinceServiceTest {
 
     private final PublicApi api = new PublicApi();
+    private final ConceptHistorySinceService conceptHistorySinceService=new ConceptHistorySinceService();
 
 
     @Test
@@ -20,8 +22,9 @@ public class ConceptHistorySinceServiceTest {
         String dateTime = "2015-08-08 14:00:00";
 
 
-
+        List<ConceptHistoryEntity> entityList = conceptHistorySinceService.taxonomyPublicApiConceptHistorySinceGet( dateTime );
         List<Response38765> response = api.taxonomyPublicApiConceptHistorySinceGet(dateTime);
+
         assertNotNull( response );
 
         for (Response38765 res : response) {
@@ -35,20 +38,11 @@ public class ConceptHistorySinceServiceTest {
     }
 
 
-//@Test
-    public void taxonomyPublicApiDeprecatedConceptHistorySinceGetTest() {
-        String dateTime = "2018-08-08 14:00:00";
-
-        Object response = api.taxonomyPublicApiDeprecatedConceptHistorySinceGet(dateTime);
-
-        assertNotNull(response);
-    }
-
 
     /**
      * Taxonomy public api term get test.
      */
-    //@Test
+    @Test
     public void taxonomyPublicApiTermGetTest() {
         String term = "Danska";
         List<Response38760> response = api.taxonomyPublicApiTermGet(term);
@@ -63,7 +57,7 @@ public class ConceptHistorySinceServiceTest {
     }
 
 
-  //  @Test
+    @Test
     public void taxonomyPublicApiTermPartGetTest() {
         String term = "Danska";
         api.taxonomyPublicApiTermPartGet(term);

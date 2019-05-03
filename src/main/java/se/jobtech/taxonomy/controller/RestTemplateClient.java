@@ -1,8 +1,16 @@
 package se.jobtech.taxonomy.controller;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.web.client.RestTemplate;
+
+@EnableMBeanExport(registration= RegistrationPolicy.IGNORE_EXISTING)
+
+
 
 @Configuration
 public class RestTemplateClient {
@@ -10,5 +18,7 @@ public class RestTemplateClient {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+
 }
 

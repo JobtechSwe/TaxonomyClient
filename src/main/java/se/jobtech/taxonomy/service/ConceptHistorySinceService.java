@@ -23,12 +23,12 @@ public class ConceptHistorySinceService {
         List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet(dateTime);
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>();
         for (Response38765 resp : response) {
-
-            conceptHistoryEntities.add( repository.save( new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
+            ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                     resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
-                    resp.getEventType( ) ) ));
+                    resp.getEventType( ) );
+            conceptHistoryEntities.add(conceptHistoryEntity );
+             repository.save( conceptHistoryEntity);
         }
-
         return conceptHistoryEntities;
     }
 
