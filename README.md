@@ -1,2 +1,2 @@
 # TaxonomyClient
-Client using API (spring-swagger-codegen-api-client) and H2 Database
+Client using API (jobtech-taxonomy-api-consumer-example) and H2 Database
