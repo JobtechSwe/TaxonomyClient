@@ -1,14 +1,14 @@
-CREATE TABLE  IF NOT EXISTS  concepthistory
-  (
-      conceptid        VARCHAR(50) PRIMARY KEY,
-      category         VARCHAR(50),
-      preferredterm    VARCHAR(50),
-      newpreferredterm VARCHAR(50),
-      oldpreferredterm VARCHAR(50),
-      deprecated       BOOLEAN,
-      transactionid    LONG,
-      eventtype        VARCHAR(50),
-      timestamp        VARCHAR(150)
-  );
+CREATE TABLE IF NOT EXISTS concepthistory
+(
+    conceptid        VARCHAR(50) PRIMARY KEY,
+    category         VARCHAR(50),
+    preferredterm    VARCHAR(50),
+    newpreferredterm VARCHAR(50),
+    oldpreferredterm VARCHAR(50),
+    deprecated       BOOLEAN,
+    transactionid    LONG,
+    eventtype        VARCHAR(50),
+    timestamp        VARCHAR(150)
+);
 
 

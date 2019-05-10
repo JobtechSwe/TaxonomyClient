@@ -3,7 +3,8 @@ package se.jobtech.taxonomy.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.jobtech.taxonomy.client.api.PublicApi;
-import se.jobtech.taxonomy.client.model.Response38765;
+import se.jobtech.taxonomy.client.model.Response38928;
+import se.jobtech.taxonomy.client.model.Response38930;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 import se.jobtech.taxonomy.repository.ConceptHistoryRepository;
 
@@ -15,13 +16,27 @@ public class ConceptHistorySinceService {
 
     @Autowired
     private ConceptHistoryRepository repository;
-
-    private PublicApi apiInstance = new PublicApi( );
+    @Autowired
+    private PublicApi apiInstance;
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptHistorySinceGet( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
+            ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
+                    resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
+                    resp.getEventType( ) );
+            conceptHistoryEntities.add( conceptHistoryEntity );
+            repository.save( conceptHistoryEntity );
+        }
+        return conceptHistoryEntities;
+    }
+
+
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptFullHistory() {
+        List<Response38928> response = apiInstance.taxonomyPublicFullHistoryGet( );
+        List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
+        for (Response38928 resp : response) {
             ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                     resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
                     resp.getEventType( ) );
@@ -32,10 +47,10 @@ public class ConceptHistorySinceService {
     }
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptDrivingLicense( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "driving-license" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -48,11 +63,11 @@ public class ConceptHistorySinceService {
     }
 
 
-    public List<ConceptHistoryEntity> taxonomyPublicApiConceptccupationname( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationname( String dateTime ) {
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "occupation-name" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -65,11 +80,11 @@ public class ConceptHistorySinceService {
     }
 
 
-    public List<ConceptHistoryEntity> taxonomyPublicApiConceptccupationgroup( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationgroup( String dateTime ) {
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "occupation-group" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -81,11 +96,11 @@ public class ConceptHistorySinceService {
         return conceptHistoryEntities;
     }
 
-       public List<ConceptHistoryEntity> taxonomyPublicApiConceptccupationField( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationField( String dateTime ) {
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "occupation-field" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -97,11 +112,11 @@ public class ConceptHistorySinceService {
         return conceptHistoryEntities;
     }
 
-    public List<ConceptHistoryEntity> taxonomyPublicApiConceptccupationSkillHeadline( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationSkillHeadline( String dateTime ) {
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "skill-headline" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -112,11 +127,12 @@ public class ConceptHistorySinceService {
         }
         return conceptHistoryEntities;
     }
-    public List<ConceptHistoryEntity> taxonomyPublicApiConceptccupationSkill( String dateTime ) {
-        List<Response38765> response = apiInstance.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationSkill( String dateTime ) {
+        List<Response38930> response = apiInstance.taxonomyPublicConceptHistorySinceGet( dateTime );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response38765 resp : response) {
+        for (Response38930 resp : response) {
             if (resp.getCategory( ).contains( "skill" )) {
                 ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getCategory( ), resp.getPreferredTerm( ), resp.getNewPreferredTerm( ),
                         resp.getOldPreferredTerm( ), resp.isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConceptId( ),
@@ -127,8 +143,6 @@ public class ConceptHistorySinceService {
         }
         return conceptHistoryEntities;
     }
-
-
 
 
 }

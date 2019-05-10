@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.threeten.bp.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,7 +54,7 @@ public class ConceptHistoryEntity {
     private Long transactionId;
 
     @Column(name = "timestamp")
-    private OffsetDateTime timestamp;
+    private String timestamp;
 
     @Column(name = "eventtype")
     private String eventType;
@@ -74,7 +73,7 @@ public class ConceptHistoryEntity {
     }
 
     public ConceptHistoryEntity( String category, String preferredTerm, String newPreferredTerm, String oldPreferredTerm,
-                                 Boolean deprecated, Long transactionId, OffsetDateTime timeStamp, String conceptId, String eventType ) {
+                                 Boolean deprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {
         this.category = category;
         this.preferredTerm = preferredTerm;
         this.newPreferredTerm = newPreferredTerm;
