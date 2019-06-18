@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Setter
 @EqualsAndHashCode
 @ToString
-@Table(name = "concepthistory")
+@Table(name = "skill")
 // <--- THIS is it
 /**
  eventtype        VARCHAR(50),
@@ -30,7 +30,7 @@ import javax.persistence.Table;
  */
 
 
-public class ConceptHistoryEntity {
+public class ConceptSkillEntity {
     @Id
     @Column(name = "conceptid")
     private String conceptId;
@@ -56,7 +56,7 @@ public class ConceptHistoryEntity {
     private String eventType;
 
 
-    public ConceptHistoryEntity() {
+    public ConceptSkillEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
         this.conceptdeprecated = null;
@@ -75,8 +75,8 @@ public class ConceptHistoryEntity {
      * @param conceptId
      * @param eventType
      */
-    public ConceptHistoryEntity( String conceptpreferredlabel, String concepttype,
-                                 Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {
+    public ConceptSkillEntity( String conceptpreferredlabel, String concepttype,
+                               Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;

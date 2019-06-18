@@ -4,22 +4,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-public class ConceptHistorySinceServiceTest {
+public class ConceptServiceTest {
 
     @MockBean
-    ConceptHistorySinceService conceptHistorySinceService;
+    ConceptService conceptService;
 
 
     @Before
     public void setUp() throws Exception {
-        conceptHistorySinceService = new ConceptHistorySinceService( );
+        conceptService = new ConceptService( );
     }
 
 
-    @Test
+    //@Test
     public void taxonomyPublicApiConceptHistorySinceGetTest() {
         String dateTime = "2015-08-08 14:00:00";
-        //     conceptHistorySinceService.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+        conceptService.taxonomyConceptHistorySinceGet( dateTime );
 
     }
 
@@ -28,11 +28,6 @@ public class ConceptHistorySinceServiceTest {
     public void taxonomyPublicApiConceptHistorySinceGet() {
     }
 
-    @Test
-    public void taxonomyPublicApiConceptFullHistory() {
-
-        // conceptHistorySinceService.taxonomyPublicApiConceptFullHistory();
-    }
 
     @Test
     public void taxonomyPublicApiConceptDrivingLicense() {

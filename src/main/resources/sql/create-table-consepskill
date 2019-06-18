@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS concepthistory
+CREATE TABLE IF NOT EXISTS skill
 (
     eventtype             VARCHAR(50),
     transactionid         LONG,

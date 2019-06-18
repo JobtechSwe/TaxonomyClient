@@ -7,23 +7,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
-import se.jobtech.taxonomy.service.ConceptHistorySinceService;
+import se.jobtech.taxonomy.service.ConceptService;
 
 import java.util.List;
 
 
+/**
+ * The type Taxonomy controller.
+ */
 @RestController
 public class TaxonomyController {
 
+    /**
+     * The Concept history since service.
+     */
     @Autowired
-    ConceptHistorySinceService conceptHistorySinceService = new ConceptHistorySinceService( );
+    ConceptService conceptHistoryService = new ConceptService( );
 
+
+    /**
+     * Instantiates a new Taxonomy controller.
+     */
     public TaxonomyController() {
+
         super( );
     }
 
-    public TaxonomyController( ConceptHistorySinceService conceptHistorySinceService ) {
-        this.conceptHistorySinceService = conceptHistorySinceService;
+    /**
+     * Instantiates a new Taxonomy controller.
+     *
+     * @param conceptHistoryService the concept history since service
+     */
+    public TaxonomyController( ConceptService conceptHistoryService ) {
+        this.conceptHistoryService = conceptHistoryService;
 
     }
 
@@ -31,58 +47,52 @@ public class TaxonomyController {
     @GetMapping("/Allconsepthistory")
     private List<ConceptHistoryEntity> getAllHistorys() {
 
-        return conceptHistorySinceService.taxonomyPublicApiConceptFullHistory( );
+        return conceptHistoryService.taxonomyPublicApiConceptFullHistory( );
     }
 
 
     @GetMapping("/AllconsepthistoryFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllHistorysSince( @PathVariable String dateTime ) {
-        return conceptHistorySinceService.taxonomyPublicApiConceptHistorySinceGet( dateTime );
+        return conceptHistoryService.taxonomyConceptHistorySinceGet( dateTime );
     }
 
 
     @GetMapping("/DrivinglicenseFromDate/{dateTime}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllDrivingLicenseSincee( @PathVariable String dateTime ) {
-        return conceptHistorySinceService.taxonomyPublicApiConceptDrivingLicense( dateTime );
+    private List<ConceptHistoryEntity> getAllDrivingLicenseFromDate( @PathVariable String dateTime ) {
+        return conceptHistoryService.taxonomyPublicApiConceptDrivingLicense( dateTime );
     }
 
 
     @GetMapping("/OccupationnameFromDate/{dateTime}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllCccupationname( @PathVariable String dateTime ) {
+    private List<ConceptHistoryEntity> getAllCccupationnameFromDate( @PathVariable String dateTime ) {
 
-        return conceptHistorySinceService.taxonomyPublicApiConceptOccupationname( dateTime );
+        return conceptHistoryService.taxonomyPublicApiConceptOccupationname( dateTime );
     }
 
 
     @GetMapping("/OccupationgroupFromDate/{dateTime}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllCccupationGroup( @PathVariable String dateTime ) {
+    private List<ConceptHistoryEntity> getAllCccupationGroupFromDate( @PathVariable String dateTime ) {
 
-        return conceptHistorySinceService.taxonomyPublicApiConceptOccupationgroup( dateTime );
+        return conceptHistoryService.taxonomyPublicApiConceptOccupationgroup( dateTime );
     }
 
     @GetMapping("/OccupationfieldFromDate{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllCccupationFieldFromDate( @PathVariable String dateTime ) {
 
-        return conceptHistorySinceService.taxonomyPublicApiConceptOccupationField( dateTime );
+        return conceptHistoryService.taxonomyPublicApiConceptOccupationField( dateTime );
     }
 
-    @GetMapping("/SkillHeadline/{dateTime}")
+    @GetMapping("/SkillsFromDate/{dateTime}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllCccupationSkillHeadline( @PathVariable String dateTime ) {
+    private List<ConceptHistoryEntity> getAllCccupationSkillsFromDate( @PathVariable String dateTime ) {
 
-        return conceptHistorySinceService.taxonomyPublicApiConceptOccupationSkillHeadline( dateTime );
+        return conceptHistoryService.taxonomyPublicApiConceptOccupationSkill( dateTime );
     }
 
-    @GetMapping("/SkillFromDate/{date}")
-    @ResponseBody
-    private List<ConceptHistoryEntity> getAllCccupationSkill( @PathVariable String dateTime ) {
-
-        return conceptHistorySinceService.taxonomyPublicApiConceptOccupationSkill( dateTime );
-    }
 
 }
