@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
-import se.jobtech.taxonomy.service.ConceptService;
+import se.jobtech.taxonomy.domain.ConceptSkillEntity;
+import se.jobtech.taxonomy.service.ChangesConceptService;
+import se.jobtech.taxonomy.service.SearchConceptService;
 
 import java.util.List;
 
@@ -22,7 +24,10 @@ public class TaxonomyController {
      * The Concept history since service.
      */
     @Autowired
-    ConceptService conceptHistoryService = new ConceptService( );
+    ChangesConceptService conceptHistoryService = new ChangesConceptService( );
+
+    @Autowired
+    SearchConceptService searchConceptService = new SearchConceptService( );
 
 
     /**
@@ -38,12 +43,12 @@ public class TaxonomyController {
      *
      * @param conceptHistoryService the concept history since service
      */
-    public TaxonomyController( ConceptService conceptHistoryService ) {
+    public TaxonomyController( ChangesConceptService conceptHistoryService ) {
         this.conceptHistoryService = conceptHistoryService;
 
     }
 
-
+//CHANGE****************************************************************************************************************
     @GetMapping("/Allconsepthistory")
     private List<ConceptHistoryEntity> getAllHistorys() {
 
@@ -54,14 +59,14 @@ public class TaxonomyController {
     @GetMapping("/AllconsepthistoryFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllHistorysSince( @PathVariable String dateTime ) {
-        return conceptHistoryService.taxonomyConceptHistorySinceGet( dateTime );
+        return conceptHistoryService.ChangeTaxonomyConceptHistorySinceGet( dateTime );
     }
 
 
     @GetMapping("/DrivinglicenseFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllDrivingLicenseFromDate( @PathVariable String dateTime ) {
-        return conceptHistoryService.taxonomyPublicApiConceptDrivingLicense( dateTime );
+        return conceptHistoryService.ChangeTaxonomyPublicApiConceptDrivingLicense( dateTime );
     }
 
 
@@ -89,9 +94,35 @@ public class TaxonomyController {
 
     @GetMapping("/SkillsFromDate/{dateTime}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllCccupationSkillsFromDate( @PathVariable String dateTime ) {
+    private List<ConceptSkillEntity> getAllCccupationSkillsFromDate( @PathVariable String dateTime ) {
 
         return conceptHistoryService.taxonomyPublicApiConceptOccupationSkill( dateTime );
+    }
+
+
+    @GetMapping("/SearchSkill/{q}")
+    @ResponseBody
+    private List<ConceptHistoryEntity> searchSkill( @PathVariable String q ) {
+        return searchConceptService.searchConcept( q, "skill", null, null);
+    }
+
+//SEARCH ***************************************************************************************************************
+    @GetMapping("/SearchOccupationName/{q}")
+    @ResponseBody
+    private List<ConceptHistoryEntity> searchOccupationName( @PathVariable String q ) {
+        return searchConceptService.searchConcept( q, "occupation-name", null, null );
+    }
+//LOADTEST**************************************************************************************************************
+    @GetMapping("/SearchLoad/{q}")
+    @ResponseBody
+    private void searchLoadTest( @PathVariable String q ) {
+        for (int i = 0; i < 50; i++) {
+            char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+            for (char c : alphabet) {
+                List<ConceptHistoryEntity> t = searchConceptService.searchConcept( String.valueOf( c ), "occupation-name", null, null );
+                List<ConceptHistoryEntity> s = searchConceptService.searchConcept( String.valueOf( c ), "skill", null, null );
+            }
+        }
     }
 
 
