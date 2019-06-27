@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 import se.jobtech.taxonomy.domain.ConceptSkillEntity;
+import se.jobtech.taxonomy.domain.ConceptsEntity;
 import se.jobtech.taxonomy.service.ChangesConceptService;
+import se.jobtech.taxonomy.service.ConceptsService;
 import se.jobtech.taxonomy.service.SearchConceptService;
 
 import java.util.List;
@@ -26,9 +28,16 @@ public class TaxonomyController {
     @Autowired
     ChangesConceptService conceptHistoryService = new ChangesConceptService( );
 
+    /**
+     * The Search concept service.
+     */
     @Autowired
     SearchConceptService searchConceptService = new SearchConceptService( );
-
+    /**
+     * The Concepts service.
+     */
+    @Autowired
+    ConceptsService conceptsService = new ConceptsService( );
 
     /**
      * Instantiates a new Taxonomy controller.
@@ -48,7 +57,7 @@ public class TaxonomyController {
 
     }
 
-//CHANGE****************************************************************************************************************
+    //CHANGE****************************************************************************************************************
     @GetMapping("/Allconsepthistory")
     private List<ConceptHistoryEntity> getAllHistorys() {
 
@@ -103,16 +112,40 @@ public class TaxonomyController {
     @GetMapping("/SearchSkill/{q}")
     @ResponseBody
     private List<ConceptHistoryEntity> searchSkill( @PathVariable String q ) {
-        return searchConceptService.searchConcept( q, "skill", null, null);
+        return searchConceptService.searchConcept( q, "skill", null, null );
     }
 
-//SEARCH ***************************************************************************************************************
+    //SEARCH ***************************************************************************************************************
     @GetMapping("/SearchOccupationName/{q}")
     @ResponseBody
     private List<ConceptHistoryEntity> searchOccupationName( @PathVariable String q ) {
         return searchConceptService.searchConcept( q, "occupation-name", null, null );
     }
-//LOADTEST**************************************************************************************************************
+
+    //CONCEPTS**************************************************************************************************************
+
+    @GetMapping("/conceptsId/{id}")
+    @ResponseBody
+    private List<ConceptsEntity> conceptsId( @PathVariable String id ) {
+        return conceptsService.getConcepts( id, null, null, true, null, null );
+
+    }
+
+    @GetMapping("/conceptsType/{type}")
+    @ResponseBody
+    private List<ConceptsEntity> conceptsType( @PathVariable String type ) {
+        return conceptsService.getConcepts( null, null, type, false, null, null );
+    }
+
+
+    @GetMapping("/conceptsPreferredLabel/{preferredLabel}")
+    @ResponseBody
+    private List<ConceptsEntity> conceptsPreferredLabel( @PathVariable String preferredLabel ) {
+        return conceptsService.getConcepts( null, preferredLabel, null, false, null, null );
+    }
+
+    //LOADTEST**************************************************************************************************************
+
     @GetMapping("/SearchLoad/{q}")
     @ResponseBody
     private void searchLoadTest( @PathVariable String q ) {

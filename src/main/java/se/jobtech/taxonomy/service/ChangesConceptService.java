@@ -3,8 +3,7 @@ package se.jobtech.taxonomy.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.jobtech.taxonomy.client.api.PublicApi;
-import se.jobtech.taxonomy.client.model.Response2976;
-import se.jobtech.taxonomy.client.model.Response2976;
+import se.jobtech.taxonomy.client.model.Response2992;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 import se.jobtech.taxonomy.domain.ConceptSkillEntity;
 import se.jobtech.taxonomy.repository.ConceptHistoryRepository;
@@ -44,9 +43,9 @@ public class ChangesConceptService {
      * @return conceptHistoryEntities
      */
     public List<ConceptHistoryEntity> ChangeTaxonomyConceptHistorySinceGet( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
 
 
             ConceptHistoryEntity conceptHistoryEntity = new ConceptHistoryEntity( resp.getConcept( ).getPreferredLabel( ), resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ),
@@ -63,10 +62,10 @@ public class ChangesConceptService {
      * @return conceptHistoryEntities
      */
     public List<ConceptHistoryEntity> ChangeTaxonomyPublicApiConceptDrivingLicense( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
             CreateConseptHistory( "driving-license", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
                     resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConcept( ).getId( ), resp.getEventType( ) );
         }
@@ -79,10 +78,10 @@ public class ChangesConceptService {
      */
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationname( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
             CreateConseptHistory( "occupation-name", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
                     resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConcept( ).getId( ), resp.getEventType( ) );
         }
@@ -95,10 +94,10 @@ public class ChangesConceptService {
      */
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationgroup( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, null, null );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, null, null );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
             CreateConseptHistory( "occupation-group", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
                     resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConcept( ).getId( ), resp.getEventType( ) );
         }
@@ -112,10 +111,10 @@ public class ChangesConceptService {
 
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationField( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
 
 
             CreateConseptHistory( "occupation-field", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
@@ -125,10 +124,10 @@ public class ChangesConceptService {
     }
 
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationSkillHeadline( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
+        for (Response2992 resp : response) {
 
 
             CreateConseptHistory( "skill-headline", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
@@ -145,11 +144,11 @@ public class ChangesConceptService {
 
 
     public List<ConceptSkillEntity> taxonomyPublicApiConceptOccupationSkill( String fromDateTime ) {
-        List<Response2976> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
+        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptSkillEntity> conceptHistoryEntities = new ArrayList<>( );
 
-        for (Response2976 resp : response) {
-            CreateConseptSkill( conceptHistoryEntities,"skill", resp.getConcept( ).getPreferredLabel( ),
+        for (Response2992 resp : response) {
+            CreateConseptSkill( conceptHistoryEntities, "skill", resp.getConcept( ).getPreferredLabel( ),
                     resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConcept( ).getId( ), resp.getEventType( ) );
         }
         return conceptHistoryEntities;
