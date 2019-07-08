@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The type Concept history entity.
+ */
 @Entity
 @Getter
 @Setter
@@ -56,6 +59,9 @@ public class ConceptHistoryEntity {
     private String eventType;
 
 
+    /**
+     * Instantiates a new Concept history entity.
+     */
     public ConceptHistoryEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
@@ -67,13 +73,15 @@ public class ConceptHistoryEntity {
     }
 
     /**
-     * @param conceptpreferredlabel
-     * @param concepttype
-     * @param conceptdeprecated
-     * @param transactionId
-     * @param timeStamp
-     * @param conceptId
-     * @param eventType
+     * Instantiates a new Concept history entity.
+     *
+     * @param conceptpreferredlabel the conceptpreferredlabel
+     * @param concepttype           the concepttype
+     * @param conceptdeprecated     the conceptdeprecated
+     * @param transactionId         the transaction id
+     * @param timeStamp             the time stamp
+     * @param conceptId             the concept id
+     * @param eventType             the event type
      */
     public ConceptHistoryEntity( String conceptpreferredlabel, String concepttype,
                                  Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {

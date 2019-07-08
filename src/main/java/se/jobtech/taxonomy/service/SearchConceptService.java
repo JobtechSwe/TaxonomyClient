@@ -6,29 +6,29 @@ import se.jobtech.taxonomy.client.api.PublicApi;
 import se.jobtech.taxonomy.client.model.Response2996;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 import se.jobtech.taxonomy.repository.ConceptHistoryRepository;
-import se.jobtech.taxonomy.repository.ConceptSkillRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * PublicApi* | [**v0TaxonomyPublicSearchGet**](docs/PublicApi.md#v0TaxonomyPublicSearchGet) |
- * **GET** /v0/taxonomy/public/search | get concepts by part of string
- */
 @Service
 public class SearchConceptService {
-
     @Autowired
     private ConceptHistoryRepository historyRepository;
-
-    @Autowired
-    private ConceptSkillRepository skillRepository;
 
     @Autowired
     private PublicApi apiInstance;
 
 
+    /**
+     * Search concept list.
+     *
+     * @param q      the q
+     * @param type   the type
+     * @param offset the offset
+     * @param limit  the limit
+     * @return the list
+     */
     public List<ConceptHistoryEntity> searchConcept( String q, String type, Long offset, Long limit ) {
         List<Response2996> response = apiInstance.v0TaxonomyPublicSearchGet( q, type, offset, limit );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );

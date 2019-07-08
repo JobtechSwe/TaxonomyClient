@@ -21,6 +21,7 @@ import java.util.List;
 @Service
 public class ChangesConceptService {
 
+
     @Autowired
     private ConceptHistoryRepository historyRepository;
 
@@ -31,18 +32,25 @@ public class ChangesConceptService {
     private PublicApi apiInstance;
 
     /**
-     * @return ConceptHistoryEntity
+     * Taxonomy public api concept full history list.
+     *
+     * @return ConceptHistoryEntity list
      */
+
+
+
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptFullHistory() {
 
-        return ChangeTaxonomyConceptHistorySinceGet( "2000-01-01 00:00:00" );
+        return taxonomyConceptHistorySinceGet( "2000-01-01 00:00:00" );
     }
 
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Change taxonomy concept history since get list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
-    public List<ConceptHistoryEntity> ChangeTaxonomyConceptHistorySinceGet( String fromDateTime ) {
+    public List<ConceptHistoryEntity> taxonomyConceptHistorySinceGet( String fromDateTime ) {
         List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
         for (Response2992 resp : response) {
@@ -58,10 +66,12 @@ public class ChangesConceptService {
     }
 
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Change taxonomy public api concept driving license list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
-    public List<ConceptHistoryEntity> ChangeTaxonomyPublicApiConceptDrivingLicense( String fromDateTime ) {
+    public List<ConceptHistoryEntity> taxonomyPublicApiConceptDrivingLicense( String fromDateTime ) {
         List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
 
@@ -73,10 +83,11 @@ public class ChangesConceptService {
     }
 
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Taxonomy public api concept occupationname list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
-
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationname( String fromDateTime ) {
         List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
@@ -89,10 +100,11 @@ public class ChangesConceptService {
     }
 
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Taxonomy public api concept occupationgroup list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
-
     public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationgroup( String fromDateTime ) {
         List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, null, null );
         List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
@@ -105,8 +117,10 @@ public class ChangesConceptService {
     }
 
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Taxonomy public api concept occupation field list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
 
 
@@ -123,23 +137,11 @@ public class ChangesConceptService {
         return conceptHistoryEntities;
     }
 
-    public List<ConceptHistoryEntity> taxonomyPublicApiConceptOccupationSkillHeadline( String fromDateTime ) {
-        List<Response2992> response = apiInstance.v0TaxonomyPublicChangesGet( fromDateTime, 0L, 1L );
-        List<ConceptHistoryEntity> conceptHistoryEntities = new ArrayList<>( );
-
-        for (Response2992 resp : response) {
-
-
-            CreateConseptHistory( "skill-headline", conceptHistoryEntities, resp.getConcept( ).getPreferredLabel( ),
-                    resp.getConcept( ).getType( ), resp.getConcept( ).isDeprecated( ), resp.getTransactionId( ), resp.getTimestamp( ), resp.getConcept( ).getId( ), resp.getEventType( ) );
-        }
-
-        return conceptHistoryEntities;
-    }
-
     /**
-     * @param fromDateTime
-     * @return conceptHistoryEntities
+     * Taxonomy public api concept occupation skill list.
+     *
+     * @param fromDateTime the from date time
+     * @return conceptHistoryEntities list
      */
 
 

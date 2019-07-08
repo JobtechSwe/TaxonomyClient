@@ -26,18 +26,18 @@ public class TaxonomyController {
      * The Concept history since service.
      */
     @Autowired
-    ChangesConceptService conceptHistoryService = new ChangesConceptService( );
+    ChangesConceptService conceptHistoryService;// = new ChangesConceptService( );
 
     /**
      * The Search concept service.
      */
     @Autowired
-    SearchConceptService searchConceptService = new SearchConceptService( );
+    SearchConceptService searchConceptService;// = new SearchConceptService( );
     /**
      * The Concepts service.
      */
     @Autowired
-    ConceptsService conceptsService = new ConceptsService( );
+    ConceptsService conceptsService;// = new ConceptsService( );
 
     /**
      * Instantiates a new Taxonomy controller.
@@ -68,14 +68,14 @@ public class TaxonomyController {
     @GetMapping("/AllconsepthistoryFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllHistorysSince( @PathVariable String dateTime ) {
-        return conceptHistoryService.ChangeTaxonomyConceptHistorySinceGet( dateTime );
+        return conceptHistoryService.taxonomyConceptHistorySinceGet( dateTime );
     }
 
 
     @GetMapping("/DrivinglicenseFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllDrivingLicenseFromDate( @PathVariable String dateTime ) {
-        return conceptHistoryService.ChangeTaxonomyPublicApiConceptDrivingLicense( dateTime );
+        return conceptHistoryService.taxonomyPublicApiConceptDrivingLicense( dateTime );
     }
 
 

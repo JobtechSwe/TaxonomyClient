@@ -1,31 +1,45 @@
 package se.jobtech.taxonomy.service;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 
+import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
+
+
+@RunWith( SpringJUnit4ClassRunner.class )
+@ContextConfiguration
 public class ChangesConceptServiceTest {
 
     @MockBean
     ChangesConceptService changesConceptService;
 
-
     @Before
-    public void setUp() throws Exception {
-        changesConceptService = new ChangesConceptService( );
-    }
+    public void setUp()  {
 
 
-    //@Test
-    public void taxonomyPublicApiConceptHistorySinceGetTest() {
-        String dateTime = "2015-08-08 14:00:00";
-        changesConceptService.ChangeTaxonomyConceptHistorySinceGet( dateTime );
 
     }
 
 
     @Test
-    public void taxonomyPublicApiConceptHistorySinceGet() {
+    public void taxonomyPublicApiConceptHistorySinceGetTest() {
+        String dateTime = "2015-08-08 14:00:00";
+        List<ConceptHistoryEntity> entityList = changesConceptService.taxonomyConceptHistorySinceGet( dateTime );
+        assertNotNull( entityList);
+
+    }
+
+
+    @Test
+    public void taxonomyPublicApiAllConceptHistory() {
     }
 
 
