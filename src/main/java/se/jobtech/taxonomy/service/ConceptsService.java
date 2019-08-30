@@ -3,7 +3,7 @@ package se.jobtech.taxonomy.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.jobtech.taxonomy.client.api.PublicApi;
-import se.jobtech.taxonomy.client.model.Response2994;
+import se.jobtech.taxonomy.client.model.Response3166;
 import se.jobtech.taxonomy.domain.ConceptsEntity;
 import se.jobtech.taxonomy.repository.ConceptsRepository;
 
@@ -26,13 +26,13 @@ public class ConceptsService {
     private PublicApi apiInstance;
 
 
-    public List<ConceptsEntity> getConcepts( String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit ) {
+    public List<ConceptsEntity> getConcepts( String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit, Long version ) {
 
 
-        List<Response2994> response = apiInstance.v0TaxonomyPublicConceptsGet( id, preferredLabel, type, deprecated, offset, limit );
+        List<Response3166> response = apiInstance.v0TaxonomyPublicConceptsGet( id, preferredLabel, type, deprecated, offset, limit, version );
 
         List<ConceptsEntity> conceptsEntities = new ArrayList<>( );
-        for (Response2994 resp : response) {
+        for (Response3166 resp : response) {
 
             ConceptsEntity conceptsEntity = new ConceptsEntity( resp.getPreferredLabel( ), resp.getType( ), resp.isDeprecated( ), resp.getDefinition( ), resp.getId( ) );
 

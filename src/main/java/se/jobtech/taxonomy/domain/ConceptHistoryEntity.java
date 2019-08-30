@@ -29,6 +29,8 @@ import javax.persistence.Table;
  concepttype      VARCHAR(50),
  conceptconceptdeprecated BOOLEAN,
  conceptpreferredlabel   VARCHAR(50)
+ version
+
  );
  */
 
@@ -58,6 +60,9 @@ public class ConceptHistoryEntity {
     @Column(name = "eventtype")
     private String eventType;
 
+    @Column(name = "version")
+    private Long version;
+
 
     /**
      * Instantiates a new Concept history entity.
@@ -70,6 +75,7 @@ public class ConceptHistoryEntity {
         this.timestamp = null;
         this.conceptId = null;
         this.eventType = null;
+        this.version = null;
     }
 
     /**
@@ -82,9 +88,10 @@ public class ConceptHistoryEntity {
      * @param timeStamp             the time stamp
      * @param conceptId             the concept id
      * @param eventType             the event type
+     * @param version               the version
      */
     public ConceptHistoryEntity( String conceptpreferredlabel, String concepttype,
-                                 Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {
+                                 Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version ) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;
@@ -93,6 +100,7 @@ public class ConceptHistoryEntity {
         this.timestamp = timeStamp;
         this.conceptId = conceptId;
         this.eventType = eventType;
+        this.version = version;
     }
 
 

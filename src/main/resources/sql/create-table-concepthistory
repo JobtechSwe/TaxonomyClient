@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS concepthistory
     conceptid             VARCHAR(50) PRIMARY KEY,
     concepttype           VARCHAR(50),
     conceptdeprecated     BOOLEAN,
-    conceptpreferredlabel VARCHAR(50)
+    conceptpreferredlabel VARCHAR(50),
+    version               LONG
 );
 
 

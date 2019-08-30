@@ -44,6 +44,10 @@ public class ConceptsEntity {
 
     @Column(name = "conceptdefinition")
     private String definition;
+    @Column(name = "version")
+    private Long version;
+
+
 
     public ConceptsEntity() {
         this.conceptpreferredlabel = null;

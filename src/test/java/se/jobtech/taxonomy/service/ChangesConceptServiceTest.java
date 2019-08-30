@@ -1,6 +1,5 @@
 package se.jobtech.taxonomy.service;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
 
-@RunWith( SpringJUnit4ClassRunner.class )
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 public class ChangesConceptServiceTest {
 
@@ -22,20 +21,19 @@ public class ChangesConceptServiceTest {
     ChangesConceptService changesConceptService;
 
     @Before
-    public void setUp()  {
-
+    public void setUp() {
 
 
     }
-
+/*
 
     @Test
     public void taxonomyPublicApiConceptHistorySinceGetTest() {
         String dateTime = "2015-08-08 14:00:00";
         List<ConceptHistoryEntity> entityList = changesConceptService.taxonomyConceptHistorySinceGet( dateTime );
-        assertNotNull( entityList);
+        assertNotNull( entityList );
 
-    }
+    }*/
 
 
     @Test

@@ -26,18 +26,18 @@ public class TaxonomyController {
      * The Concept history since service.
      */
     @Autowired
-    ChangesConceptService conceptHistoryService;// = new ChangesConceptService( );
+    ChangesConceptService conceptHistoryService = new ChangesConceptService( );
 
     /**
      * The Search concept service.
      */
     @Autowired
-    SearchConceptService searchConceptService;// = new SearchConceptService( );
+    SearchConceptService searchConceptService = new SearchConceptService( );
     /**
      * The Concepts service.
      */
     @Autowired
-    ConceptsService conceptsService;// = new ConceptsService( );
+    ConceptsService conceptsService = new ConceptsService( );
 
     /**
      * Instantiates a new Taxonomy controller.
@@ -58,20 +58,16 @@ public class TaxonomyController {
     }
 
     //CHANGE****************************************************************************************************************
-    @GetMapping("/Allconsepthistory")
-    private List<ConceptHistoryEntity> getAllHistorys() {
-
-        return conceptHistoryService.taxonomyPublicApiConceptFullHistory( );
-    }
 
 
-    @GetMapping("/AllconsepthistoryFromDate/{dateTime}")
+    @GetMapping("/concept-fromversion-toversion/{fromVersion}/{toVersion}")
     @ResponseBody
-    private List<ConceptHistoryEntity> getAllHistorysSince( @PathVariable String dateTime ) {
-        return conceptHistoryService.taxonomyConceptHistorySinceGet( dateTime );
+
+    private List<ConceptHistoryEntity> getConcepts (@PathVariable Long fromVersion, Long toVersion )  {
+
+        return conceptHistoryService.taxonomyPublicApiConceptFromVersionToVersion( fromVersion,toVersion,null,null);
     }
-
-
+/*
     @GetMapping("/DrivinglicenseFromDate/{dateTime}")
     @ResponseBody
     private List<ConceptHistoryEntity> getAllDrivingLicenseFromDate( @PathVariable String dateTime ) {
@@ -142,7 +138,7 @@ public class TaxonomyController {
     @ResponseBody
     private List<ConceptsEntity> conceptsPreferredLabel( @PathVariable String preferredLabel ) {
         return conceptsService.getConcepts( null, preferredLabel, null, false, null, null );
-    }
+    }*/
 
     //LOADTEST**************************************************************************************************************
 
@@ -152,8 +148,8 @@ public class TaxonomyController {
         for (int i = 0; i < 50; i++) {
             char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
             for (char c : alphabet) {
-                List<ConceptHistoryEntity> t = searchConceptService.searchConcept( String.valueOf( c ), "occupation-name", null, null );
-                List<ConceptHistoryEntity> s = searchConceptService.searchConcept( String.valueOf( c ), "skill", null, null );
+                List<ConceptHistoryEntity> t = searchConceptService.searchConcept( String.valueOf( c ), "occupation-name", null, null,1L );
+                List<ConceptHistoryEntity> s = searchConceptService.searchConcept( String.valueOf( c ), "skill", null, null ,2L);
             }
         }
     }
