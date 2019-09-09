@@ -90,8 +90,8 @@ public class ConceptHistoryEntity {
      * @param eventType             the event type
      * @param version               the version
      */
-    public ConceptHistoryEntity( String conceptpreferredlabel, String concepttype,
-                                 Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version ) {
+    public ConceptHistoryEntity(String conceptpreferredlabel, String concepttype,
+                                Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;

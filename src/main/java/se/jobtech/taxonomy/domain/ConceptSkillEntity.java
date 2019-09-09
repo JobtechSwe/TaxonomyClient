@@ -75,8 +75,8 @@ public class ConceptSkillEntity {
      * @param conceptId
      * @param eventType
      */
-    public ConceptSkillEntity( String conceptpreferredlabel, String concepttype,
-                               Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType ) {
+    public ConceptSkillEntity(String conceptpreferredlabel, String concepttype,
+                              Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;

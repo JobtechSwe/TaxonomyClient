@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateClient {
     @Bean
     public RestTemplate restTemplate() {
-        return new RestTemplate( );
+        return new RestTemplate();
     }
 
 

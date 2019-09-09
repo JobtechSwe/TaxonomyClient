@@ -24,7 +24,7 @@ import javax.persistence.Table;
  "concepttype"
  "conceptdefinition"
  "conceptpreferredLabel"
- "conceptdeprecated"
+
  */
 
 
@@ -33,26 +33,18 @@ public class ConceptsEntity {
     @Column(name = "conceptid")
     private String conceptId;
 
-    @Column(name = "conceptpreferredlabel")
+    @Column(name = "conceptpreferredlabel", length = 512)
     private String conceptpreferredlabel;
 
     @Column(name = "concepttype")
     private String concepttype;
 
-    @Column(name = "conceptdeprecated")
-    private Boolean conceptdeprecated;
 
-    @Column(name = "conceptdefinition")
+    @Column(name = "conceptdefinition", length=1024)
     private String definition;
-    @Column(name = "version")
-    private Long version;
-
-
-
     public ConceptsEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
-        this.conceptdeprecated = null;
         this.definition = null;
         this.conceptId = null;
 
@@ -61,19 +53,18 @@ public class ConceptsEntity {
     /**
      * @param conceptpreferredlabel
      * @param concepttype
-     * @param conceptdeprecated
      * @param definition
      * @param conceptId
      */
     @Contract(pure = true)
     public ConceptsEntity( String conceptpreferredlabel, String concepttype,
-                           Boolean conceptdeprecated, String definition, String conceptId ) {
+                           String definition, String conceptId  ) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;
-        this.conceptdeprecated = conceptdeprecated;
         this.definition = definition;
         this.conceptId = conceptId;
+        // this.version=version;
 
     }
 

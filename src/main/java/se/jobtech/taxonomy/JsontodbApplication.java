@@ -13,19 +13,19 @@ import se.jobtech.taxonomy.controller.TaxonomyController;
 public class JsontodbApplication implements CommandLineRunner {
 
     private final TaxonomyController taxonomyController;
-    private Logger LOG = LoggerFactory.getLogger( "JsontodbApplication" );
+    private Logger LOG = LoggerFactory.getLogger("JsontodbApplication");
 
     @Autowired
-    public JsontodbApplication( TaxonomyController taxonomyController ) {
+    public JsontodbApplication(TaxonomyController taxonomyController) {
         this.taxonomyController = taxonomyController;
     }
 
-    public static void main( String[] args ) {
-        SpringApplication.run( JsontodbApplication.class, args );
+    public static void main(String[] args) {
+        SpringApplication.run(JsontodbApplication.class, args);
     }
 
     @Override
-    public void run( String... args ) {
+    public void run(String... args) {
 
 
     }
