@@ -5,11 +5,12 @@
  ------------ | ------------- | ------------- | -------------
 **conceptpreferredlabel** | **String** | | 
 **concepttype** | **String** |  | 
-**conceptdeprecated** | **Long** |  | 
+**conceptdeprecated** | **Boolean** |  | 
 **transactionId** | **Long** |  | 
 **timeStamp** | **String** |  | 
 **conceptId** | **String** |  | 
-**eventType** | **Long** |  | 
+**eventType** | **String** |  | 
+**version** | **Long** |  | 
      
      
     

@@ -6,7 +6,6 @@ import se.jobtech.taxonomy.client.api.PublicApi;
 import se.jobtech.taxonomy.client.model.Response3164;
 import se.jobtech.taxonomy.domain.ConceptHistoryEntity;
 import se.jobtech.taxonomy.repository.ConceptHistoryRepository;
-import se.jobtech.taxonomy.repository.ConceptSkillRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,7 @@ public class ChangesConceptService {
     @Autowired
     private ConceptHistoryRepository historyRepository;
 
-    @Autowired
 
-    private ConceptSkillRepository skillRepository;
 
     @Autowired
     private PublicApi apiInstance;

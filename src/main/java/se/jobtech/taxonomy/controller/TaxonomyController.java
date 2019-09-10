@@ -25,7 +25,7 @@ public class TaxonomyController {
      * The Concept history since service.
      */
     @Autowired
-    ChangesConceptService conceptHistoryService = new ChangesConceptService();
+    ChangesConceptService changesConceptService = new ChangesConceptService();
 
     /**
      * The Search concept service.
@@ -49,68 +49,75 @@ public class TaxonomyController {
     /**
      * Instantiates a new Taxonomy controller.
      *
-     * @param conceptHistoryService the concept history since service
+     * @param changesConceptService the concept history since service
      */
-    public TaxonomyController(ChangesConceptService conceptHistoryService) {
-        this.conceptHistoryService = conceptHistoryService;
+    public TaxonomyController(ChangesConceptService changesConceptService) {
+        this.changesConceptService = changesConceptService;
 
     }
-    //CHANGE****************************************************************************************************************
+    //CONCEPT CHANGE FROM VERSION TO VERSION****************************************************************************************************************
 
 
     @GetMapping("/concept-changes-fromversion-toversion/{fromVersion}/{toVersion}")
     @ResponseBody
 
-    private List<ConceptHistoryEntity> getConcepts(@PathVariable Long fromVersion, Long toVersion) {
+    private List<ConceptHistoryEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
 
-        return conceptHistoryService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
+        return changesConceptService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
     }
 
-    //CONCEPTS**************************************************************************************************************
+    //CONCEPTS TYPES FROM VERSION**************************************************************************************************************
     @GetMapping("/drivinglicenses-from-version/{version}")
     @ResponseBody
-    private List<ConceptsEntity> getAllDrivingLicenseFromVersion(@PathVariable String version ) {
-        return conceptsService.taxonomyPublicApiConcepts( null, null, "driving_licence", false, 1L, 10L, 1L );
+    private List<ConceptsEntity> getAllDrivingLicenseFromVersion(@PathVariable Long version ) {
+        return conceptsService.taxonomyPublicApiConcepts( null, null, "driving_licence", false, 0L, 10L, version );
 
     }
 
     @GetMapping("/occupationname-from-version/{version}")
     @ResponseBody
-    private List<ConceptsEntity> getAllCccupationnameFromVersion(@PathVariable String version ) {
-        return conceptsService.taxonomyPublicApiConcepts( null, null, "occupation_name", false, 1L, 10L, 1L );
+    private List<ConceptsEntity> getAllCccupationnameFromVersion(@PathVariable Long version ) {
+        return conceptsService.taxonomyPublicApiConcepts( null, null, "occupation_name", false, 0L, 10L, version );
 
     }
 
 
     @GetMapping("/skill-from-version/{version}")
     @ResponseBody
-    private List<ConceptsEntity> getAllSkillFromVersion(@PathVariable String version ) {
-        return conceptsService.taxonomyPublicApiConcepts( null, null, "skill", false, 1L, 10L, 1L );
+    private List<ConceptsEntity> getAllSkillFromVersion(@PathVariable Long version ) {
+        return conceptsService.taxonomyPublicApiConcepts( null, null, "skill", false, 0L, 10L, version );
 
     }
 
-    //SEARCH ***************************************************************************************************************
-    @GetMapping("/search-skill/{q}")
+    @GetMapping("/concept-from-id/{id}")
     @ResponseBody
-    private List<ConceptHistoryEntity> searchSkill( @PathVariable String q ) {
-        return searchConceptService.searchConcept( q, "skill", null, null,1L );
+    private List<ConceptsEntity> getConceptFromVersionWithID(@PathVariable String id,Long version ) {
+        return conceptsService.taxonomyPublicApiConcepts( id, null, null, false, 0L, 10L, null );
+
+    }
+
+    //SEARCH CONCEPTS ***************************************************************************************************************
+    @GetMapping("/search-skill/{q}/{version}")
+    @ResponseBody
+    private List<ConceptHistoryEntity> searchSkill( @PathVariable String q,Long version ) {
+        return searchConceptService.searchConcept( q, "skill", null, null,version );
     }
 
 
-    @GetMapping("/search-occupation-name/{q}")
+    @GetMapping("/search-occupation-name/{q}/{version}")
     @ResponseBody
     private List<ConceptHistoryEntity> searchOccupationName( @PathVariable String q ) {
         return searchConceptService.searchConcept( q, "occupation-name", null, null,1L );
     }
 
-    //CONCEPTS**************************************************************************************************************
+    //GET REPLACED CONCEPTS**************************************************************************************************************
 
     @GetMapping("/concept-replaced-by-changes/{fromVersion}/{toVersion}")
     @ResponseBody
 
     private List<ConceptHistoryEntity> getReplacedConcepts(@PathVariable Long fromVersion, Long toVersion) {
 
-        return conceptHistoryService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
+        return changesConceptService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
     }
 
 
