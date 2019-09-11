@@ -1,3 +1,3 @@
 # ConceptHistoryRepository
 
-Save **List&lt;[**ConceptHistoryEntity**](ConceptHistoryEntity.md) in H2 Database**
+Save **List&lt;[**conceptEntity**](conceptEntity.md) in H2 Database**

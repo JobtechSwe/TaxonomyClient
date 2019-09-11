@@ -25,7 +25,7 @@ public class ChangesConceptServiceTest {
     @Test
     public void taxonomyPublicApiConceptHistorySinceGetTest() {
         String dateTime = "2015-08-08 14:00:00";
-        List<ConceptHistoryEntity> entityList = changesConceptService.taxonomyConceptHistorySinceGet( dateTime );
+        List<conceptEntity> entityList = changesConceptService.taxonomyConceptHistorySinceGet( dateTime );
         assertNotNull( entityList );
 
     }*/

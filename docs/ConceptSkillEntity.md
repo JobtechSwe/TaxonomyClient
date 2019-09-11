@@ -1,4 +1,4 @@
-# ConceptHistoryEntity
+# conceptEntity
   
 ### Properties
 Name | Type | Description | Notes

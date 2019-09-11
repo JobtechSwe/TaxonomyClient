@@ -40,8 +40,9 @@ public class ConceptsEntity {
     private String concepttype;
 
 
-    @Column(name = "conceptdefinition", length=1024)
+    @Column(name = "conceptdefinition", length = 1024)
     private String definition;
+
     public ConceptsEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
@@ -57,8 +58,8 @@ public class ConceptsEntity {
      * @param conceptId
      */
     @Contract(pure = true)
-    public ConceptsEntity( String conceptpreferredlabel, String concepttype,
-                           String definition, String conceptId  ) {
+    public ConceptsEntity(String conceptpreferredlabel, String concepttype,
+                          String definition, String conceptId) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;

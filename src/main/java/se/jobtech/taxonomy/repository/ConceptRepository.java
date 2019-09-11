@@ -8,6 +8,6 @@ import se.jobtech.taxonomy.domain.ConceptEntity;
 
 @Transactional
 @Repository
-public interface ConceptHistoryRepository extends CrudRepository<ConceptEntity, Long> {
+public interface ConceptRepository extends CrudRepository<ConceptEntity, Long> {
 
 }

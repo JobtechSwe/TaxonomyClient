@@ -30,7 +30,7 @@ public class ConceptsService {
     public List<Response3179> getConcepts(Long fromVersion, Long toVersion) {
 
 
-        return  apiInstance.v0TaxonomyPublicReplacedByChangesGet(fromVersion, toVersion);
+        return apiInstance.v0TaxonomyPublicReplacedByChangesGet(fromVersion, toVersion);
 /*
         List<ConceptsEntity> conceptsEntities = new ArrayList<>();
         for (Response3179 resp : response) {
@@ -44,7 +44,7 @@ public class ConceptsService {
         return conceptsEntities;*/
     }
 
-    public List<ConceptsEntity> taxonomyPublicApiConcepts(String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit, Long version ) {
+    public List<ConceptsEntity> taxonomyPublicApiConcepts(String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit, Long version) {
 
 
         List<Response3166> response = apiInstance.v0TaxonomyPublicConceptsGet(id, preferredLabel, type, deprecated, offset, limit, version);

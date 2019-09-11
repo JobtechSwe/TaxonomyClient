@@ -78,7 +78,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
       
-      private List<ConceptHistoryEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
+      private List<conceptEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
   
           return changesConceptService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
       }    
@@ -90,7 +90,7 @@ All URIs are relative to *http://localhost:3000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*TaxonomyController* | [**getConceptsChangesFromVersions**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /concept-changes-fromversion-toversion/{fromVersion}/{toVersion} | Return ConceptHistoryEntity changes from-version to-version and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
+*TaxonomyController* | [**getConceptsChangesFromVersions**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /concept-changes-fromversion-toversion/{fromVersion}/{toVersion} | Return conceptEntity changes from-version to-version and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
 *TaxonomyController* | [**getAllDrivingLicenseFromVersion**](docs/ConceptsService.md) | **GET** /taxonomyP |  Return all driving license from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
 *TaxonomyController* | [**getAllCccupationnameFromVersion**](docs/ConceptsService.md) | **GET**  /getAllOccupationnameFromVersion/{version}| Return Drivinglicense history from date to now, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
 *TaxonomyController* | [**getAllSkillFromVersion**](docs/ConceptsService.md) | **GET** /getAllSkillFromVersion/{version}| Return Skills history from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
@@ -107,7 +107,7 @@ Class | Method | HTTP request | Description
  - [SearchConceptService](docs/SearchConceptService.md)
  
  ## Documentation for Domains
- - [ConceptHistoryEntity](docs/ConceptHistoryEntity.md)
+ - [conceptEntity](docs/conceptEntity.md)
  - [ConceptsEntity](docs/ConceptsEntity.md)
  - [ConceptSkillEntity](docs/ConceptSkillEntity.md)
  

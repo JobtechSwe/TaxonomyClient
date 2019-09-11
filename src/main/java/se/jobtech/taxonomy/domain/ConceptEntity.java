@@ -12,14 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * The type Concept history entity.
+ * The type Concept entity.
  */
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-@Table(name = "concepthistory")
+@Table(name = "concept")
 // <--- THIS is it
 /**
  eventtype        VARCHAR(50),
@@ -35,7 +35,7 @@ import javax.persistence.Table;
  */
 
 
-public class ConceptHistoryEntity {
+public class ConceptEntity {
     @Id
     @Column(name = "conceptid")
     private String conceptId;
@@ -65,9 +65,9 @@ public class ConceptHistoryEntity {
 
 
     /**
-     * Instantiates a new Concept history entity.
+     * Instantiates a new Concept entity.
      */
-    public ConceptHistoryEntity() {
+    public ConceptEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
         this.conceptdeprecated = null;
@@ -79,7 +79,7 @@ public class ConceptHistoryEntity {
     }
 
     /**
-     * Instantiates a new Concept history entity.
+     * Instantiates a new Concept entity.
      *
      * @param conceptpreferredlabel the conceptpreferredlabel
      * @param concepttype           the concepttype
@@ -90,8 +90,8 @@ public class ConceptHistoryEntity {
      * @param eventType             the event type
      * @param version               the version
      */
-    public ConceptHistoryEntity(String conceptpreferredlabel, String concepttype,
-                                Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version) {
+    public ConceptEntity(String conceptpreferredlabel, String concepttype,
+                         Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
         this.concepttype = concepttype;

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS concepthistory
+CREATE TABLE IF NOT EXISTS concept
 (
     eventtype             VARCHAR(50),
     transactionid         LONG,
