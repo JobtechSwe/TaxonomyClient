@@ -1,7 +1,8 @@
-# src/main/java/se/jobtech/taxonomy/JsontodbApplication.java.TaxonomyClient
-TaxonomyClient and H2 Database
+#JsontodbApplication.TaxonomyClient
+
+##TaxonomyClient and H2 Database
 - version: 0.9.0
-  
+##Requirements
 Building the client library requires:
 1. Java 1.7+
 2. Maven/Gradle
@@ -10,7 +11,6 @@ Building the client library requires:
 
 ### Preparations
 Before you can compile TaxonomyClient, you need to install spring-swagger-codegen-api-client-0.0.1-SNAPSHOT.jar in ..\.m2 directory
-
 with this dependency
 
 
@@ -77,35 +77,28 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
- @ @GetMapping("/concept-changes-fromversion-toversion/{fromVersion}/{toVersion}")
-      @ResponseBody
-  
+      
       private List<ConceptHistoryEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
   
           return changesConceptService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
-      }
-    
+      }    
     
 ```
 ## Documentation for API Endpoints
 
-# Taxonomy controller
-
 All URIs are relative to *http://localhost:3000*
-getConceptsChangesFromVersions
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*TaxonomyController* | [**getConceptsChangesFromVersions/{fromVersion}/{toVersion}**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /getConceptsChangesFromVersions | Return ConceptHistoryEntity changes from a version to versionY) and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
-*TaxonomyController* | [**getAllDrivingLicenseFromVersion/{version}**](ConceptsService.md#taxonomyPublicApiConcepts) | **GET** /taxonomyPublicApiConcepts/{version} |  Return all driving license from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**getAllCccupationnameFromVersion/{version}**](ChangesConceptService.md#ChangesConceptService) | **GET**  /getAllCccupationnameFromVersion/{version}| Return Drivinglicense history from date to now, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**/getAllSkillFromVersion/{version}**](ChangesConceptService.md.md#ChangesConceptService) | **GET** /getAllSkillFromVersion/{version}| Return Skills history from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**/SearchSkill/{q}**](SearchConceptService.md#SearchConceptService) | **GET** /SearchSkill/{q} | Return Skill(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-conseptskill
-*TaxonomyController* | [**/SearchOccupationName/{q}**](SearchConceptService.md#SearchConceptService) | **GET** /SearchOccupationName/{q} | Return SearchOccupationName(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory  
-*TaxonomyController* | [**/conceptsId/{id}**](TaxonomyController.md#ConceptsService) | **GET** conceptsId/{id} | Return concepts with id. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts   
-*TaxonomyController* | [**/conceptsType/{type}**](TaxonomyController.md#ConceptsService) | **GET** /conceptsType/{type} | Return concepts with type. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts  
-*TaxonomyController* | [**/conceptsPreferredLabel/{preferredLabel}**](TaxonomyController.md#ConceptsService) | **GET** /conceptsPreferredLabel/{preferredLabel} | Return concepts. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts  
-*TaxonomyController* | [**/SearchLoad/{q}**](TaxonomyController.md#SearchConceptService) | **GET** /SearchLoad/{q} | run Loadtest 
+*TaxonomyController* | [**getConceptsChangesFromVersions**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /concept-changes-fromversion-toversion/{fromVersion}/{toVersion} | Return ConceptHistoryEntity changes from-version to-version and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
+*TaxonomyController* | [**getAllDrivingLicenseFromVersion**](docs/ConceptsService.md) | **GET** /taxonomyP |  Return all driving license from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getAllCccupationnameFromVersion**](docs/ConceptsService.md) | **GET**  /getAllOccupationnameFromVersion/{version}| Return Drivinglicense history from date to now, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getAllSkillFromVersion**](docs/ConceptsService.md) | **GET** /getAllSkillFromVersion/{version}| Return Skills history from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getConceptFromVersionWithID**](docs/ConceptsService.md) | **GET** /getConceptFromVersionWithID/{version}| Return Skills history from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**searchSkill**](docs/SearchConceptService.md) | **GET** /SearchSkill/{q} | Return Skill(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-conseptskill
+*TaxonomyController* | [**searchOccupationName**](docs/SearchConceptService.md) | **GET** /SearchOccupationName/{q} | Return SearchOccupationName(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory  
+*TaxonomyController* | [**getReplacedConcepts**](TaxonomyController.md#ConceptsService) | **GET** conceptsId/{id} | Return concepts with id. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts   
+*TaxonomyController* | [**SearchLoad**](TaxonomyController.md#SearchConceptService) | **GET** /SearchLoad/{q} | run Load test. 
 
 
 ## Documentation for Services
