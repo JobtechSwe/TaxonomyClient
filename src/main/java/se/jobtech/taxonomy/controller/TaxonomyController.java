@@ -129,8 +129,10 @@ public class TaxonomyController {
         for (int i = 0; i < 50; i++) {
             char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
             for (char c : alphabet) {
-                List<ConceptChangesEntity> t = searchConceptService.searchConcept(String.valueOf(c), "occupation-name", null, null, 1L);
+                List<ConceptChangesEntity> t = searchConceptService.searchConcept(String.valueOf(c), "ssyk_level_4", null, null, 1L);
+                System.out.println("Lista av ssyk_level_4 ConceptChanges Version1"+t);
                 List<ConceptChangesEntity> s = searchConceptService.searchConcept(String.valueOf(c), "skill", null, null, 2L);
+                System.out.println("Lista av skill ConceptChanges Version2"+s);
             }
         }
     }
