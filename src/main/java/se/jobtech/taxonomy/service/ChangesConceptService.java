@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.jobtech.taxonomy.client.api.PublicApi;
 import se.jobtech.taxonomy.client.model.Response3164;
-import se.jobtech.taxonomy.domain.ConceptEntity;
-import se.jobtech.taxonomy.repository.ConceptRepository;
+import se.jobtech.taxonomy.domain.ConceptChangesEntity;
+import se.jobtech.taxonomy.repository.ConceptChangesRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ChangesConceptService {
 
     @Autowired
-    private ConceptRepository conceptRepository;
+    private ConceptChangesRepository conceptChangesRepository;
 
 
     @Autowired
@@ -27,15 +27,15 @@ public class ChangesConceptService {
      *
      * @return conceptEntity list
      */
-    public List<ConceptEntity> taxonomyPublicApiConceptChangesFromVersionToVersion(Long fromVersion, Long toVersion, Long offset, Long limit) {
+    public List<ConceptChangesEntity> taxonomyPublicApiConceptChangesFromVersionToVersion(Long fromVersion, Long toVersion, Long offset, Long limit) {
 
-        List<ConceptEntity> conceptEntities = new ArrayList<>();
+        List<ConceptChangesEntity> conceptEntities = new ArrayList<>();
         List<Response3164> response = apiInstance.v0TaxonomyPublicChangesGet(fromVersion, toVersion, offset, limit);
         for (Response3164 resp : response) {
-            ConceptEntity conceptEntity = new ConceptEntity(resp.getConcept().getPreferredLabel(), resp.getConcept().getType(),
+            ConceptChangesEntity conceptChangesEntity = new ConceptChangesEntity(resp.getConcept().getPreferredLabel(), resp.getConcept().getType(),
                     resp.getConcept().isDeprecated(), null, null, resp.getConcept().getId(), resp.getEventType(), resp.getVersion());
-            conceptEntities.add(conceptEntity);
-            conceptRepository.save(conceptEntity);
+            conceptEntities.add(conceptChangesEntity);
+            conceptChangesRepository.save(conceptChangesEntity);
         }
 
         return conceptEntities;

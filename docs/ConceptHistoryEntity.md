@@ -1,4 +1,4 @@
-  # conceptEntity
+  # conceptChangesEntity
   
   ### Properties
  Name | Type | Description | Notes

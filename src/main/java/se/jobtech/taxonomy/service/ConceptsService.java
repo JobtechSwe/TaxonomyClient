@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import se.jobtech.taxonomy.client.api.PublicApi;
 import se.jobtech.taxonomy.client.model.Response3166;
 import se.jobtech.taxonomy.client.model.Response3179;
-import se.jobtech.taxonomy.domain.ConceptsEntity;
-import se.jobtech.taxonomy.repository.ConceptsRepository;
+import se.jobtech.taxonomy.domain.ConceptEntity;
+import se.jobtech.taxonomy.repository.ConceptRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ConceptsService {
 
     @Autowired
-    private ConceptsRepository conceptsRepository;
+    private ConceptRepository conceptRepository;
 
 
     @Autowired
@@ -44,18 +44,18 @@ public class ConceptsService {
         return conceptsEntities;*/
     }
 
-    public List<ConceptsEntity> taxonomyPublicApiConcepts(String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit, Long version) {
+    public List<ConceptEntity> taxonomyPublicApiConcepts(String id, String preferredLabel, String type, boolean deprecated, Long offset, Long limit, Long version) {
 
 
         List<Response3166> response = apiInstance.v0TaxonomyPublicConceptsGet(id, preferredLabel, type, deprecated, offset, limit, version);
 
-        List<ConceptsEntity> conceptsEntities = new ArrayList<>();
+        List<ConceptEntity> conceptsEntities = new ArrayList<>();
         for (Response3166 resp : response) {
 
-            ConceptsEntity conceptsEntity = new ConceptsEntity(resp.getPreferredLabel(), resp.getType(), resp.getDefinition(), resp.getId());
+            ConceptEntity conceptEntity = new ConceptEntity(resp.getPreferredLabel(), resp.getType(), resp.getDefinition(), resp.getId());
 
-            conceptsEntities.add(conceptsEntity);
-            conceptsRepository.save(conceptsEntity);
+            conceptsEntities.add(conceptEntity);
+            conceptRepository.save(conceptEntity);
         }
         //  conceptsRepository.saveAll(conceptsEntities);
         return conceptsEntities;

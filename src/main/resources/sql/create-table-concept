@@ -1,13 +1,10 @@
 CREATE TABLE IF NOT EXISTS concept
 (
-    eventtype             VARCHAR(50),
-    transactionid         LONG,
-    timestamp             VARCHAR(150),
     conceptid             VARCHAR(50) PRIMARY KEY,
     concepttype           VARCHAR(50),
+    conceptdefinition     VARCHAR(150),
     conceptdeprecated     BOOLEAN,
-    conceptpreferredlabel VARCHAR(50),
-    version               LONG
+    conceptpreferredlabel VARCHAR(50)
 );
 
 
