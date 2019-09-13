@@ -4,13 +4,13 @@
 ### Example
 ```java
 List<Response2996> response = apiInstance.v0TaxonomyPublicSearchGet( q, type, offset, limit );
-        List<conceptChangesEntity> conceptHistoryEntities = new ArrayList<>( );
+        List<changesConceptEntity> conceptHistoryEntities = new ArrayList<>( );
         for (Response2996 resp : response) {
 
-            conceptChangesEntity conceptChangesEntity = new conceptChangesEntity( resp.getPreferredLabel( ), resp.getType( ), null,
+            changesConceptEntity changesConceptEntity = new changesConceptEntity( resp.getPreferredLabel( ), resp.getType( ), null,
                     null, null, resp.getId( ), null );
-            conceptHistoryEntities.add( conceptChangesEntity );
-            historyRepository.save( conceptChangesEntity );
+            conceptHistoryEntities.add( changesConceptEntity );
+            historyRepository.save( changesConceptEntity );
         }
         return conceptHistoryEntities;
     }
@@ -25,4 +25,4 @@ Name | Type | Description | Notes
 
 
 ### Return type
-**List&lt;[**conceptChangesEntity**](conceptChangesEntity.md)&gt;**
+**List&lt;[**changesConceptEntity**](changesConceptEntity.md)&gt;**

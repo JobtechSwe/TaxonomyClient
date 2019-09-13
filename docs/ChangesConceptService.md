@@ -17,13 +17,13 @@
 ### Example
 ```java
 
-        List<conceptChangesEntity> conceptHistoryEntities = new ArrayList<>();
+        List<changesConceptEntity> conceptHistoryEntities = new ArrayList<>();
         List<Response3164> response = apiInstance.v0TaxonomyPublicChangesGet(fromVersion, toVersion, offset, limit);
         for (Response3164 resp : response) {
-            conceptChangesEntity conceptChangesEntity = new conceptChangesEntity(resp.getConcept().getPreferredLabel(), resp.getConcept().getType(),
+            changesConceptEntity changesConceptEntity = new changesConceptEntity(resp.getConcept().getPreferredLabel(), resp.getConcept().getType(),
                     resp.getConcept().isDeprecated(), null, null, resp.getConcept().getId(), resp.getEventType(), resp.getVersion());
-            conceptHistoryEntities.add(conceptChangesEntity);
-            historyRepository.save(conceptChangesEntity);
+            conceptHistoryEntities.add(changesConceptEntity);
+            historyRepository.save(changesConceptEntity);
         }
 
         return conceptHistoryEntities;
@@ -40,5 +40,5 @@ Name | Type | Description | Notes
 
 ### Return type
 
-**List&lt;[**conceptChangesEntity**](conceptChangesEntity.md)&gt;**;
+**List&lt;[**changesConceptEntity**](changesConceptEntity.md)&gt;**;
 

@@ -11,7 +11,7 @@ Building the client library requires:
 
 ### Preparations
 Before you can compile TaxonomyClient, you need to install spring-swagger-codegen-api-client-0.0.1-SNAPSHOT.jar in ..\.m2 directory
-with this dependency
+with dependency
 
 
 ```xml
@@ -78,7 +78,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
       
-      private List<conceptChangesEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
+      private List<changesConceptEntity> getConceptsChangesFromVersions(@PathVariable Long fromVersion, Long toVersion) {
   
           return changesConceptService.taxonomyPublicApiConceptChangesFromVersionToVersion(fromVersion, toVersion, null, null);
       }    
@@ -90,31 +90,31 @@ All URIs are relative to *http://localhost:3000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*TaxonomyController* | [**getConceptsChangesFromVersions**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /concept-changes-fromversion-toversion/{fromVersion}/{toVersion} | Return conceptChangesEntity changes from-version to-version and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
-*TaxonomyController* | [**getAllDrivingLicenseFromVersion**](docs/ConceptsService.md) | **GET** /drivinglicenses-from-version/{version} |  Return all driving license concepts from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**getAllCccupationnameFromVersion**](docs/ConceptsService.md) | **GET**  /occupationname-from-version/{version}| Return occupationname concepts from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**getAllSkillFromVersion**](docs/ConceptsService.md) | **GET** /skill-from-version/{version}| Return Skills concepts from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
-*TaxonomyController* | [**getConceptFromVersionWithID**](docs/ConceptsService.md) | **GET** /concept-from-id/{id}| Return concept with id from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getConceptsChangesFromVersions**](docs/ChangesConceptService.md#taxonomyPublicApiConceptChangesFromVersionToVersion) | **GET** /concept-changes-fromversion-toversion/{fromVersion}/{toVersion} | Return changesConceptEntity changes from-version to-version and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory.
+*TaxonomyController* | [**getAllDrivingLicenseFromVersion**](docs/ConceptService.md) | **GET** /drivinglicenses-from-version/{version} |  Return all driving license concepts from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getAllCccupationnameFromVersion**](docs/ConceptService.md) | **GET**  /occupationname-from-version/{version}| Return occupationname concepts from a version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getAllSkillFromVersion**](docs/ConceptService.md) | **GET** /skill-from-version/{version}| Return Skills concepts from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
+*TaxonomyController* | [**getConceptFromVersionWithID**](docs/Conceptservice.md) | **GET** /concept-from-id/{id}| Return concept with id from version, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory. se the format yyyy-MM-dd HH:mm:ss (i.e. 2017-06-09 14:30:01).
 *TaxonomyController* | [**searchSkill**](docs/SearchConceptService.md) | **GET** /search-skill/{q}/{version} | Return Skill(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-conseptskill
 *TaxonomyController* | [**searchOccupationName**](docs/SearchConceptService.md) | **GET** /search-occupation-name/{q}/{version} | Return OccupationName(s) concepts by part of string, and insert data in table,TaxonomyClient\src\main\resources\sql\create-table-consepthistory  
-*TaxonomyController* | [**getReplacedConcepts**](TaxonomyController.md#ConceptsService) | **GET** /concept-replaced-by-changes/{fromVersion}/{toVersion} | Return concepts replaced by changes, and show the history of concepts being replaced from a given version. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts   
+*TaxonomyController* | [**getReplacedConcepts**](ConceptsService) | **GET** /concept-replaced-by-changes/{fromVersion}/{toVersion} | Return concepts replaced by changes, and show the history of concepts being replaced from a given version. and insert data in table,C:\Workspace\TaxonomyClient\src\main\resources\sql\create-table-concepts   
 *TaxonomyController* | [**SearchLoad**](TaxonomyController.md#SearchConceptService) | **GET** /SearchLoad/{q} | run Load test. 
 
 
 ## Documentation for Services
  - [ChangesConceptService](docs/ChangesConceptService.md)
- - [ConceptsService](docs/ConceptsService.md)
+ - [ConceptService](docs/ConceptService.md)
  - [SearchConceptService](docs/SearchConceptService.md)
  
  ## Documentation for Domains
- - [conceptChangesEntity](docs/conceptChangesEntity.md)
- - [ConceptsEntity](docs/ConceptsEntity.md)
+ - [ConceptChangesEntity](docs/ConceptChangesEntity.md)
+ - [ConceptEntity](docs/ConceptEntity.md)
  - [ConceptSkillEntity](docs/ConceptSkillEntity.md)
  
   ## Documentation for Repositorys
- - [ConceptHistoryRepository](docs/ConceptHistoryRepository.md)
+ - [ConceptChangesRepository](docs/ConceptChangesRepository.md)
  - [ConceptSkillRepository](docs/ConceptSkillRepository.md)
- - [ConceptsRepository](docs/ConceptsRepository.md)
+ - [ConceptRepository](docs/ConceptRepository.md)
  
 
 

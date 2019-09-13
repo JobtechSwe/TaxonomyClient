@@ -30,7 +30,7 @@ import javax.persistence.Table;
  */
 
 
-public class ConceptSkillEntity {
+public class SkillConceptEntity {
     @Id
     @Column(name = "conceptid")
     private String conceptId;
@@ -56,7 +56,7 @@ public class ConceptSkillEntity {
     private String eventType;
 
 
-    public ConceptSkillEntity() {
+    public SkillConceptEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
         this.conceptdeprecated = null;
@@ -75,7 +75,7 @@ public class ConceptSkillEntity {
      * @param conceptId
      * @param eventType
      */
-    public ConceptSkillEntity(String conceptpreferredlabel, String concepttype,
+    public SkillConceptEntity(String conceptpreferredlabel, String concepttype,
                               Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;

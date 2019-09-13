@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "conceptchanges")
 
 
-public class ConceptChangesEntity {
+public class ChangesConceptEntity {
     @Id
     @Column(name = "conceptid")
     private String conceptId;
@@ -53,7 +53,7 @@ public class ConceptChangesEntity {
     /**
      * Instantiates a new Concept entity.
      */
-    public ConceptChangesEntity() {
+    public ChangesConceptEntity() {
         this.conceptpreferredlabel = null;
         this.concepttype = null;
         this.conceptdeprecated = null;
@@ -76,7 +76,7 @@ public class ConceptChangesEntity {
      * @param eventType             the event type
      * @param version               the version
      */
-    public ConceptChangesEntity(String conceptpreferredlabel, String concepttype,
+    public ChangesConceptEntity(String conceptpreferredlabel, String concepttype,
                                 Boolean conceptdeprecated, Long transactionId, String timeStamp, String conceptId, String eventType, Long version) {
 
         this.conceptpreferredlabel = conceptpreferredlabel;
